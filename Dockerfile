@@ -3,6 +3,7 @@ FROM node:12-slim
 WORKDIR /js
 
 RUN npm install -g webpack webpack-cli
+
 COPY ./package.json /js
 COPY ./package-lock.json /js
 
@@ -10,8 +11,6 @@ RUN npm install .
 
 COPY . /js
 
-# RUN npm run --prefix=/install/ build --verbose
-RUN webpack --version
 RUN webpack\
     --verbose\
     --display=verbose\
@@ -30,5 +29,3 @@ RUN webpack\
     --display-provided-exports\
     --display-optimization-bailout\
     --display-error-details 
-
-CMD ls ./bin
